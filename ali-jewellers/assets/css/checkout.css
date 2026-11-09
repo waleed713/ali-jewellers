@@ -1,0 +1,108 @@
+/* checkout.css : checkout form, payment methods and the thank-you screen (loads after cart.css) */
+.coform .cf {
+  border: 0;
+  margin-bottom: 34px;
+  display: grid;
+  gap: 16px;
+}
+.coform h2 {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+.coform label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.92rem;
+  color: var(--champ);
+}
+.coform input,
+.coform select {
+  font: inherit;
+  color: var(--ivory);
+  background: var(--bark);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 13px 14px;
+  width: 100%;
+}
+.coform input:focus,
+.coform select:focus {
+  outline: 0;
+  border-color: var(--gold);
+}
+.g2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.pms {
+  display: grid;
+  gap: 10px;
+}
+.coform .pm {
+  display: block;
+  cursor: pointer;
+}
+.pm input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.pm span {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  transition:
+    border-color 0.25s,
+    background 0.25s;
+}
+.pm b {
+  display: block;
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--ivory);
+}
+.pm small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(246, 238, 223, 0.65);
+  font-size: 0.88rem;
+}
+.pm input:checked + span {
+  border-color: var(--gold);
+  background: rgba(201, 162, 75, 0.08);
+}
+.pm input:focus-visible + span {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.coform .note {
+  margin-top: 12px;
+}
+.done {
+  max-width: 640px;
+  margin: 30px auto;
+  text-align: center;
+}
+.done svg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+}
+.done p {
+  margin: 8px 0;
+  color: rgba(246, 238, 223, 0.8);
+}
+.done .mrow {
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .g2 {
+    grid-template-columns: 1fr;
+  }
+  .btn-lg {
+    width: 100%;
+  }
+}

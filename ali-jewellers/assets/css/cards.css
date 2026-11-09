@@ -1,0 +1,84 @@
+/* cards.css : the product card used on category pages, product page (related) and home */
+.pimg {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--bark);
+}
+.pimg img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.pc:hover .pimg img {
+  transform: scale(1.05);
+}
+.tag {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  padding: 5px 12px;
+  background: rgba(251, 247, 239, 0.92);
+  color: var(--ink);
+  font-size: 0.82rem;
+  border-radius: 20px;
+}
+.pt {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+}
+.pt h3 {
+  font-size: 1.3rem;
+}
+.pt p {
+  color: rgba(246, 238, 223, 0.62);
+  font-size: 0.95rem;
+}
+.pt strong {
+  font-weight: 500;
+  color: var(--champ);
+  white-space: nowrap;
+}
+.pa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.addb {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--champ);
+  padding: 9px 18px;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+.addb:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+@media (max-width: 600px) {
+  .pt {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pa .addb {
+    flex: 1;
+  }
+  .pa .link {
+    flex: 0 0 auto;
+  }
+}

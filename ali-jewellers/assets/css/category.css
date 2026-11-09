@@ -1,0 +1,264 @@
+/* category.css : gold, diamond, men's and bridal pages */
+.phero {
+  position: relative;
+  min-height: max(520px, calc(100svh - var(--hh)));
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #000;
+}
+.phero > picture {
+  position: absolute;
+  inset: 0;
+}
+.phero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.phero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 14, 10, 0.25),
+    rgba(20, 14, 10, 0.1) 40%,
+    rgba(20, 14, 10, 0.88)
+  );
+}
+.phero-copy {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--pad) clamp(44px, 8vw, 110px);
+}
+.phero h1 {
+  font-size: clamp(2.4rem, 7.4vw, 7rem);
+  max-width: 16ch;
+  line-height: 1.02;
+}
+.ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.ln > span {
+  display: block;
+}
+.scrl {
+  position: absolute;
+  z-index: 2;
+  right: var(--pad);
+  bottom: 0;
+  width: 1px;
+  height: 90px;
+  background: linear-gradient(var(--gold), transparent);
+  transform-origin: top;
+  animation: drop 2.2s var(--ease) infinite;
+}
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(28px, 7vw, 120px);
+  padding: clamp(64px, 11vw, 170px) var(--pad);
+  align-items: end;
+}
+.lead {
+  font-size: clamp(1.6rem, 3.2vw, 2.9rem);
+  font-weight: 300;
+  line-height: 1.25;
+  max-width: 24ch;
+}
+.intro p + p {
+  margin-top: 14px;
+}
+.intro div p {
+  color: rgba(246, 238, 223, 0.75);
+  max-width: 44ch;
+}
+
+.pshow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 56px 28px;
+  padding: 0 var(--pad) clamp(70px, 10vw, 150px);
+}
+.pshow .pc {
+  grid-column: span 2;
+}
+.pshow .pc:nth-child(n + 4) {
+  grid-column: span 3;
+}
+.pshow .pc:nth-child(n + 4) .pimg img {
+  aspect-ratio: 4/3;
+}
+
+.gd {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(28px, 7vw, 120px);
+  padding: clamp(64px, 10vw, 150px) var(--pad);
+  background: var(--bark);
+}
+.gd-h {
+  position: sticky;
+  top: 190px;
+  align-self: start;
+}
+.gd-h h2 {
+  max-width: 12ch;
+}
+.gr {
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+}
+.gr:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.gr p {
+  margin-top: 10px;
+  color: rgba(246, 238, 223, 0.75);
+  max-width: 48ch;
+}
+
+.band {
+  position: relative;
+  min-height: 64vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+}
+.band picture {
+  position: absolute;
+  inset: 0;
+}
+.band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 9, 6, 0.58);
+  z-index: 1;
+}
+.band h2 {
+  position: relative;
+  z-index: 2;
+  max-width: 20ch;
+  padding: 0 var(--pad);
+  font-size: clamp(1.9rem, 4.6vw, 4rem);
+}
+.cta {
+  text-align: center;
+  padding: clamp(70px, 10vw, 140px) var(--pad);
+}
+.cta p {
+  margin: 14px 0 28px;
+  color: var(--soft);
+}
+
+/* parallax and entrance (reveal.js sets --py) */
+.phero img,
+.band img {
+  transform: translate3d(0, var(--py, 0px), 0) scale(1.14);
+  will-change: transform;
+}
+.js .phero img {
+  animation: settle 2.2s var(--ease) both;
+}
+@keyframes settle {
+  from {
+    scale: 1.18;
+    opacity: 0.4;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+.js .ln > span {
+  transform: translateY(105%);
+  animation: rise 1.4s var(--ease) 0.35s forwards;
+}
+.js .ln:nth-child(2) > span {
+  animation-delay: 0.5s;
+}
+@keyframes rise {
+  to {
+    transform: none;
+  }
+}
+.js .crumb {
+  opacity: 0;
+  animation: fadein 1s 0.9s forwards;
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phero img,
+  .band img {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro,
+  .gd {
+    grid-template-columns: 1fr;
+  }
+  .gd-h {
+    position: static;
+  }
+  .pshow {
+    grid-template-columns: 1fr 1fr;
+    gap: 44px 20px;
+  }
+  .pshow .pc,
+  .pshow .pc:nth-child(n + 4) {
+    grid-column: auto;
+  }
+  .pshow .pc:last-child {
+    grid-column: 1/-1;
+  }
+  .pshow .pc:nth-child(n + 4) .pimg img {
+    aspect-ratio: 4/5;
+  }
+  .pshow .pc:last-child .pimg img {
+    aspect-ratio: 4/3;
+  }
+}
+@media (max-width: 600px) {
+  .pshow {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .pshow .pc:last-child .pimg img {
+    aspect-ratio: 4/5;
+  }
+  .phero {
+    min-height: 70svh;
+  }
+  .scrl {
+    display: none;
+  }
+}

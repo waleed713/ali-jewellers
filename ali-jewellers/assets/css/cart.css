@@ -1,0 +1,135 @@
+/* cart.css : bag page, also reused by checkout (summary box, page frame) */
+.cartpg {
+  padding: clamp(36px, 6vw, 80px) var(--pad) clamp(60px, 9vw, 130px);
+}
+.cart-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.cart-h h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+.cart-wrap {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(28px, 5vw, 70px);
+  align-items: start;
+}
+.ci {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.ci img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.ci h3 {
+  font-size: 1.2rem;
+}
+.ci p {
+  color: rgba(246, 238, 223, 0.62);
+  font-size: 0.92rem;
+}
+.ci .qty {
+  margin-top: 10px;
+}
+.ci .qty button {
+  width: 34px;
+  height: 34px;
+}
+.ci .rm {
+  color: var(--gold);
+  margin-top: 8px;
+}
+.ci .tot {
+  font-weight: 500;
+  color: var(--champ);
+}
+.sum {
+  position: sticky;
+  top: 176px;
+  padding: 28px;
+  background: var(--bark);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+.sum h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.sum .r {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  color: rgba(246, 238, 223, 0.8);
+}
+.sum .r.t {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 16px;
+  font-size: 1.25rem;
+  color: var(--champ);
+}
+.sum .btn {
+  display: block;
+  margin-top: 18px;
+}
+.sum .mi {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+}
+.sum .mi img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.sum .mi span {
+  flex: 1;
+  font-size: 0.95rem;
+}
+.empty {
+  padding: 50px 0;
+  color: var(--soft);
+}
+.empty .btn {
+  margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .cart-wrap {
+    grid-template-columns: 1fr;
+  }
+  .sum {
+    position: static;
+  }
+}
+@media (max-width: 600px) {
+  .ci {
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+  }
+  .ci img {
+    width: 80px;
+    height: 80px;
+  }
+  .ci .tot {
+    grid-column: 2;
+  }
+  .sum {
+    padding: 22px;
+  }
+}

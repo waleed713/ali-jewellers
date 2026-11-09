@@ -1,0 +1,265 @@
+/* base.css : fonts, colours, reset, type, buttons and bits every page shares */
+@font-face {
+  font-family: Vonca;
+  src: url(../fonts/vonca-light.otf) format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: Vonca;
+  src: url(../fonts/vonca-regular.otf) format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Vonca;
+  src: url(../fonts/vonca-medium.otf) format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: Vonca;
+  src: url(../fonts/vonca-semibold.otf) format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --ink: #140e0a;
+  --bark: #1f1610;
+  --deep: #0e0906;
+  --gold: #c9a24b;
+  --champ: #e8d5a8;
+  --ivory: #f6eedf;
+  --copper: #a4502f;
+  --line: rgba(201, 162, 75, 0.28);
+  --soft: rgba(246, 238, 223, 0.72);
+  --pad: clamp(18px, 5vw, 80px);
+  --hh: 160px;
+  --ease: cubic-bezier(0.77, 0, 0.18, 1);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 150px;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: Vonca, Georgia, serif;
+  font-weight: 400;
+  background: var(--ink);
+  color: var(--ivory);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.lock {
+  overflow: hidden;
+}
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+picture {
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+h2 {
+  font-size: clamp(1.9rem, 3.8vw, 3.2rem);
+}
+h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 8px 14px;
+  z-index: 200;
+}
+.skip:focus {
+  left: 10px;
+  top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 30px;
+  background: var(--gold);
+  color: var(--ink);
+  font:
+    500 1rem Vonca,
+    serif;
+  text-align: center;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+.btn:hover {
+  background: transparent;
+  color: var(--gold);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ivory);
+  border-color: rgba(246, 238, 223, 0.55);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+}
+.btn-lg {
+  padding: 17px 40px;
+  font-size: 1.1rem;
+}
+.link {
+  color: var(--gold);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  background: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.note {
+  color: var(--gold);
+  min-height: 1.2em;
+}
+
+/* breadcrumb (category and product pages) */
+.crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+  font-size: 0.92rem;
+  color: rgba(246, 238, 223, 0.8);
+}
+.crumb a + a::before,
+.crumb span::before {
+  content: "/";
+  margin-right: 10px;
+  color: var(--gold);
+}
+
+/* shared section pieces */
+.sec {
+  padding: clamp(60px, 10vw, 140px) var(--pad);
+}
+.sec-alt {
+  background: var(--bark);
+}
+.head {
+  max-width: 60ch;
+  margin-bottom: clamp(28px, 5vw, 60px);
+}
+.head p {
+  margin-top: 14px;
+  color: var(--soft);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* form fields used in panels, checkout and product page */
+select,
+.field input,
+.field select {
+  font: inherit;
+  color: var(--ivory);
+  background: var(--bark);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 12px 14px;
+}
+
+/* scroll reveal (only when JS is running, see reveal.js) */
+.js .rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+}
+.js .rv.in {
+  opacity: 1;
+  transform: none;
+}
+.js .pimg picture,
+.js .tile picture,
+.js .v-img picture,
+.js .split > picture {
+  clip-path: inset(0);
+  transition: clip-path 1.3s var(--ease);
+}
+.js .pimg:not(.in) picture,
+.js .tile:not(.in) picture,
+.js .v-img:not(.in) picture,
+.js .split:not(.in) > picture {
+  clip-path: inset(0 0 100% 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .js .rv,
+  .js .ln > span,
+  .js .crumb {
+    opacity: 1;
+    transform: none;
+  }
+  .js .pimg picture,
+  .js .tile picture,
+  .js .v-img picture,
+  .js .split > picture {
+    clip-path: none !important;
+  }
+}
